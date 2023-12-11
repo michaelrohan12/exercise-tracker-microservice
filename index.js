@@ -173,6 +173,7 @@ app.route("/api/users/:id/logs").get(async (req, res) => {
     return res.status(400).json({ error: "Invalid user ID" });
   }
 
+  console.log(id, req.query.from, req.query.to, req.query.limit);
   const fromDate = formatDate(req.query.from);
   const toDate = formatDate(req.query.to);
   const parsedLimit = req.query.limit ? parseInt(req.query.limit) : null;
@@ -202,7 +203,7 @@ app.route("/api/users/:id/logs").get(async (req, res) => {
       username: userData.username,
       count: userData.exercises.length,
       _id: userData._id,
-      log: userData.exercises.map(({ _id, ...rest }) => rest),
+      log: userData.exercises.map(({ _id, ...rest }) => rest).reverse(),
     });
   } catch (err) {
     console.error("Error while retrieving logs", err.message);
