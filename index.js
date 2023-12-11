@@ -66,7 +66,7 @@ app.get("/api/hello", function (req, res) {
 /*
 - POST to /api/users with form data username to create a new user and 
 the returned response from POST /api/users with form data username will be 
-- an object with username and _id properties
+an object with username and _id properties
 */
 app.route("/api/users").post(async (req, res) => {
   const { username } = req.body;
@@ -163,7 +163,7 @@ that has a description, duration, and date properties
 - The description property of any object in the log array that is returned from GET /api/users/:_id/logs is a string.
 - The duration property of any object in the log array that is returned from GET /api/users/:_id/logs is a number.
 - The date property of any object in the log array that is returned from GET /api/users/:_id/logs is a string.
-- We can add from, to and limit parameters to a GET /api/users/:_id/logs request to retrieve part of the log of any user.
+- We can add from, to and limit parameters to a GET /api/users/:_id/logs request to retrieve part of the log of any user,
 from and to are dates in yyyy-mm-dd format. limit is an integer of how many logs to send back.
 */
 app.route("/api/users/:id/logs").get(async (req, res) => {
