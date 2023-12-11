@@ -195,6 +195,8 @@ app.route("/api/users/:id/logs").get(async (req, res) => {
       );
     }
 
+    userData.exercises = userData.exercises.reverse();
+
     if (limitValue) {
       userData.exercises = userData.exercises.slice(0, limitValue);
     }
@@ -203,7 +205,7 @@ app.route("/api/users/:id/logs").get(async (req, res) => {
       username: userData.username,
       count: userData.exercises.length,
       _id: userData._id,
-      log: userData.exercises.map(({ _id, ...rest }) => rest).reverse(),
+      log: userData.exercises.map(({ _id, ...rest }) => rest),
     });
   } catch (err) {
     console.error("Error while retrieving logs", err.message);
